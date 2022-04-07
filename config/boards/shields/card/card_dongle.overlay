@@ -6,7 +6,8 @@
 
 #include "card.dtsi"
 
-kscan0: kscan {
+/ {
+	kscan0: kscan {
 		compatible = "zmk,kscan-gpio-matrix";
 		label = "KSCAN";
 
@@ -17,3 +18,5 @@ kscan0: kscan {
 			, <&pro_micro 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 			, <&pro_micro 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 			;
+	};
+};
