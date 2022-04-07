@@ -121,87 +121,64 @@
 		bindings = < &sl AL2 >;
 	};
     };
-       keymap {
+        keymap {
                 compatible = "zmk,keymap";
-                
-       		alpha1 {
-		bindings = <
-		&trans 		&hm LCTL L 	&hm LALT G 	&hm LGUI D		&hm RGUI H 	&hm RALT U    		&hm RCTL O	&trans  
-		&hl NM1 I	&hl SM2 S	&hl SM1 R	&hl SYS T 	 	&hl SYS N    	&hl SM1 E   		&hl SM2 A 	&hl NM1 C
-		&trans	 	&trans 		&trans 		&mt LC(LS(LALT)) SPC 	&alpha2macro	&trans 			&trans		&trans
-								&trans	 		&trans
-		>;
-		};
-       		game {
-		bindings = <
-		&trans 		&kp L 		&kp G 		&kp D			&hm RGUI H 	&hm RALT U    		&hm RCTL O	&trans  
-		&kp I		&kp S		&kp R		&kp T 		 	&hl SYS N    	&hl SM1 E   		&hl SM2  A 	&hl NM1 C
-		&trans	 	&trans 		&trans 		&kp SPC 		&sl AL2		&trans 			&trans		&trans
-								&trans	 		&trans
-		>;
-		};
-       		alpha2 {
-		bindings = <
-		&trans 	 	&kp V 		&kp W		&kp M	 	 	&kp F    	&kp SQT			&kp Z 		&trans
-		&kp Q	 	&kp J 		&kp P		&kp K 			&kp B 		&kp DOT			&kp X		&kp Y 
-		&trans	 	&trans 		&trans 		&sk LSHIFT 		&sl AL2U	&trans			&trans		&trans
-								&trans	 		&trans
-		>;
-		};
-		
-       		sym1 {
-		bindings = <
-		&trans 		&kp LA(N3)   	&kp LS(N3)	&kp DLLR	    	&kp LS(COMMA)	&kp LS(DOT)		&kp CARET	&trans
-		&kp GRAVE	&kp TILDE 	&kp MINUS      	&kp BSLH	 	&kp LBKT	&kp RBKT	 	&kp PIPE 	&kp SLASH
-		&trans		&trans  	&trans		&trans  		&trans		&trans 			&trans  	&trans
-							 	&trans		 	&trans
-		>;
-		};
-		sym2 {
-		bindings = <
-		&trans		&kp ATSN	&td LA(RBKT) LA(LS(RBKT))	&td  LA(LBKT) LA(LS(LBKT))	&kp LPRN	&kp RPRN 	&kp SEMI 	&trans
-		&kp STAR  	&kp PRCNT	&td QMARK EXCL       		&kp DQT   			&kp LBRC  	&kp RBRC	&kp AMPS	&kp COLON 
-		&trans 		&trans 		&trans  			&trans 				&trans 		&trans 		&trans 		&trans   
-						 				&trans				&trans
 
-		>;
-		};
+                default_layer {
+		// -----------------------------------------------------------------------------------------
+		// |  Q  |  W  |  E  |  R  |  T   |   |  Y  |  U   |  I  |  O  |  P  |
+		// |  A  |  S  |  D  |  F  |  G   |   |  H  |  J   |  K  |  L  |  ;  |
+		// |  Z  |  X  |  C  |  V  |  B   |   |  N  |  M   |  ,  |  .  |  /  |
+		//             | GUI | NAV | SHFT |   | SPC | SYM  | ALT |
+                        bindings = <
+  		 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P
+  		 &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI
+ 		  &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
+   		       &kp LGUI &mo 1 &kp LSHFT &kp SPACE &mo 2 &kp RALT
+    		                    >;
+       		         };
+      		          nav_layer {
+		// -----------------------------------------------------------------------------------------
+		// |BTCLR|     | ESC |  ~   |     |   | TAB | HOME |  UP  | END | DEL  |
+		// | BT1 | GUI | ALT | CTRL | NUM |   |  /  | LEFT | DOWN | RGT | BKSP |
+		// | BT2 |     |     |      |     |   |  \  | ENT  |      |     |      |
+		//             |     |      |     |   |     |      |      |
+                        bindings = <
+ 		  &bt BT_CLR   &trans      &kp ESC  &kp TILDE &trans     &kp TAB  &kp HOME &kp UP   &kp END   &kp DEL
+  		 &bt BT_SEL 0 &kp K_CMENU &kp RALT &kp LCTRL &mo 3      &kp FSLH &kp LEFT &kp DOWN &kp RIGHT &kp BSPC
+ 		  &bt BT_SEL 1 &trans      &trans   &trans    &trans     &kp BSLH &kp RET  &trans   &trans    &trans
+                            &trans   &trans    &trans     &trans   &trans   &trans
+                        >;
+                };
 
-		num {
-		bindings = <
-		&trans		&hm LCTL DOT 	&hm LALT N0	&hm LGUI N1 		&hm RGUI N2 	&hm RALT N3		&hm RCTL N4	&trans
-		&kp MINUS	&kp PLUS 	&kp N5		&kp N6			&kp N7		&kp N8			&kp N9   	&kp EQUAL
-		&trans  	&trans 		&trans		&sr LSHIFT AL1 		&trans 		&trans 			&trans  	&trans 
-								&trans	 	 	&trans
-		>;
-		};
+                sym_layer {
+		// -----------------------------------------------------------------------------------------
+		// |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |
+		// |     |     |     |     |     |   |  -  |  =  |  {  |  }  | "|" |
+		// |     |     |     |     |     |   |  _  |  +  |  [  |  ]  |  \  |
+		//             | GUI |     | SPC |   | ENT |     | ALT |
+                        bindings = <
+  		 &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR
+  		 &trans    &trans    &trans    &trans    &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp PIPE
+  		 &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans          &trans   &kp BSLH
+                       &kp LGUI  &trans    &kp SPACE   &kp RET   &trans    &kp RALT
+                        >;
+                };
 
-		sys {
-		bindings = <
-		&trans		 	&kp ESC			&kp LC(LS(TAB)) 	&kp RC(TAB)		&td LG(V) LG(C) 	&kp UP 		&td Q BKSP 			&trans
-		&td LG(GRAVE) TAB	&td HOME DEL		&td END LG(LBKT) 	&kp LG(RBKT)		&td TAB LEFT  		&kp DOWN 	&td  LC(LG(LS(N4))) RIGHT 	&kp RET 
-		&trans 			&trans 		 	&trans			&sr LSHIFT AL1 		&kp RGUI		&trans 		&trans				&trans 	   
-									 		&trans	 		&trans
-		>;
-		};
-
-		bt {
-		bindings = <
-		&trans		&bt BT_PRV	&bt BT_NXT	&trans 			&trans 	&trans	&trans	&trans
-		&bootloader  	&trans 		&trans 		&trans 			&trans 	&trans 	&trans	&bt BT_CLR
-		&trans 	 	&trans 		&trans		&to AL1			&trans  &trans  &trans 	&bt BT_CLR
-						 		&trans			&trans
-		>;
-		};
-
-       		alpha2cap {
-		bindings = <
-		&trans 	 	&kp LS(V)	&kp LS(W)	&kp LS(M) 	 	&kp LS(F)    	&trans		&kp LS(Z)	&trans 
-		&kp LS(Q) 	&kp LS(J) 	&kp LS(P)	&kp LS(K)		&kp LS(B)	&kp COMMA	&kp LS(X)	&kp LS(Y) 
-		&trans	 	&trans 		&trans 		&trans 			&kp LA(SEMI)	&trans		&trans		&trans
-								&trans	 		&trans
-		>;
-		};
-        
-	};
+		// This layer is unreachable until "tri layer state" is sorted out.
+		// Leaving it here for completeness.
+                num_layer {
+		// -----------------------------------------------------------------------------------------
+		// |     |     |     |     |     |   |  A  |  7  |  8  |  9  |  D  |
+		// |     |     |     |     |     |   |  B  |  4  |  5  |  6  |  E  |
+		// |     |     |     |     |     |   |  C  |  1  |  2  |  3  |  F  |
+		//             |     |     |     |   |  0  |  .  |     |
+                        bindings = <
+  		 &trans &trans &trans &trans &trans    &kp A  &kp N7  &kp N8 &kp N9 &kp D
+ 		  &trans &trans &trans &trans &trans    &kp B  &kp N4  &kp N5 &kp N6 &kp E
+ 		  &trans &trans &trans &trans &trans    &kp C  &kp N1  &kp N2 &kp N3 &kp F
+                 &trans &trans &trans    &kp N0 &kp DOT &trans
+                 >;
+                };
+        };
 };
