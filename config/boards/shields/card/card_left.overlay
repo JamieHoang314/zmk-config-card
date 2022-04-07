@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "microdox.dtsi"
+#include "card.dtsi"
 
 &kscan0 {
 	col-gpios
